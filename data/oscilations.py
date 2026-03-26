@@ -78,11 +78,8 @@ to higher total energy.
 
         "formula": "F = -kx",
 
-        "mihu": "The system does not tolerate displacement. The further you go, the stronger it pulls you back.",
-
-        "intuitive": "Spring-like motion that always pulls toward equilibrium.",
-
-        "deep_explanation": """
+        "mihu": """
+The system does not tolerate displacement. The further you go, the stronger it pulls you back. Well...
 Simple harmonic motion is defined by a linear restoring force that is proportional
 to displacement and directed toward equilibrium.
 
@@ -90,14 +87,9 @@ This leads to a second-order differential equation whose solutions are sinusoida
 Energy oscillates between kinetic and potential forms without loss in the ideal case.
 
 The motion is fully deterministic and periodic.
-"""
-    },
-    "assumptions": {
-        "definition": "Conditions required for oscillatory motion to occur.",
 
-        "mihu": "Not every system oscillates. Only those that are allowed to return.",
-
-        "deep_explanation": """
+ There are certain conditions required for oscillatory motion to occur. Not every system oscillates. Only those that are allowed to return.
+ 
 For oscillations to occur, two key conditions must be satisfied:
 
 1) A restoring force must exist, acting to return the system to equilibrium.

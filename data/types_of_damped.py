@@ -2,7 +2,8 @@
 from core.concept import Concept
 
 types_damped = Concept(
-    name="Damped Oscillations",
+    
+    name="Types of Damped Oscillations",
     
     definition="""
 Oscillations in which the amplitude gradually decreases over time due to energy dissipation.
@@ -65,8 +66,7 @@ Discriminant Δ = γ² - 4 ω_0²
 """,
     
     deep_dive="""
-Key insights, Mihu style:
-
+Some key insights:
 - Energy always decreases: E(t) = E0 * exp(-γ t) for underdamped.
 - Underdamped: you still see oscillations, but amplitude shrinks exponentially.
 - Critically damped: fastest non-oscillatory return to equilibrium — no overshoot.
