@@ -1,6 +1,7 @@
 from core.concept import Concept
 
 damped_oscillations = Concept(
+    
     name="Damped Oscillations",
 
     definition="""
