@@ -330,5 +330,107 @@ quiz_data = {
             ],
             "answer": 1
         }
+    ],
+    "Forced Oscillations & Frequency Limits": [
+        {
+            "question": "What is a forced oscillation?",
+            "options": [
+                "Motion without any external force",
+                "Oscillation driven by an external periodic force",
+                "Random motion due to noise",
+                "Motion with no energy loss"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "What form does the external driving force usually take?",
+            "options": [
+                "F(t) = F₀ sin(ωt)",
+                "F(t) = F₀ cos(ωt)",
+                "F(t) = kx",
+                "F(t) = -bv"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "The general solution of forced oscillations is:",
+            "options": [
+                "x = x_h",
+                "x = x_p",
+                "x = x_h + x_p",
+                "x = 0"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What happens to the homogeneous solution over time in a damped driven system?",
+            "options": [
+                "It grows exponentially",
+                "It remains constant",
+                "It decays to zero",
+                "It becomes chaotic"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What does the particular solution represent?",
+            "options": [
+                "Initial conditions only",
+                "Transient behaviour",
+                "Steady-state response due to external force",
+                "Random fluctuations"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What happens in the low frequency limit (ω → 0)?",
+            "options": [
+                "System cannot respond at all",
+                "System follows the force quasi-statically",
+                "System oscillates infinitely fast",
+                "System becomes unstable"
+            ],
+            "answer": 2
+        },
+        {
+            "question": "What is the phase shift δ when ω → 0?",
+            "options": [
+                "π/2",
+                "π",
+                "0",
+                "undefined"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What happens in the high frequency limit (ω → ∞)?",
+            "options": [
+                "Amplitude becomes very large",
+                "System follows force perfectly",
+                "Amplitude tends to zero",
+                "System enters resonance"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "What is resonance in forced oscillations?",
+            "options": [
+                "When damping is maximum",
+                "When system stops moving",
+                "Maximum energy transfer from force to system",
+                "When force is zero"
+            ],
+            "answer": 3
+        },
+        {
+            "question": "At resonance (ω ≈ ω₀), the phase shift is approximately:",
+            "options": [
+                "0",
+                "π",
+                "π/2",
+                "2π"
+            ],
+            "answer": 3
+        }
     ]
 }
