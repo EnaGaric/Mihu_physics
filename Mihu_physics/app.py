@@ -1,3 +1,24 @@
+import random
+import time
+
+#MIHU TYPING EFFECT
+def mihu_type(text):
+    import time, random
+
+    for char in text:
+        print(char, end="", flush=True)
+
+        if char in ".!?":
+            time.sleep(1)
+        elif char in ",":
+            time.sleep(0.7)
+        else:
+            time.sleep(random.uniform(0.01, 0.1))
+
+    print()
+
+
+#IMPORTS
 from Mihu_physics.data.waves.oscilations import oscilations
 from Mihu_physics.data.waves.normal_mode2 import normal_modes_dive
 
@@ -9,12 +30,12 @@ from Mihu_physics.data.waves.quiz import quiz_data
 from Mihu_physics.data.waves.forced_oscilations import forced_oscillations
 from Mihu_physics.data.waves.frequency_limit import frequency_limits
 from Mihu_physics.data.waves.normal_mode1 import normal_modes
-import random
 
+
+#QUIZ
 def run_quiz():
     print("\n=== QUIZ MODE ===")
 
-    #izbor koncepta
     concepts = list(quiz_data.keys())
 
     for i, c in enumerate(concepts, start=1):
@@ -32,7 +53,6 @@ def run_quiz():
         print("Invalid choice.")
         return
 
-    #RANDOM ORDER
     questions = quiz_data[concept_name].copy()
     random.shuffle(questions)
 
@@ -41,9 +61,8 @@ def run_quiz():
     for q in questions:
         print("\n" + q["question"])
 
-        #RANDOMIZACIJA
         options = q["options"].copy()
-        correct_answer = options[q["answer"] - 1]
+        correct_text = options[q["answer"] - 1]
 
         random.shuffle(options)
 
@@ -55,17 +74,16 @@ def run_quiz():
         if ans.isdigit():
             ans_index = int(ans) - 1
 
-            if 0 <= ans_index < len(options) and options[ans_index] == correct_answer:
+            if 0 <= ans_index < len(options) and options[ans_index] == correct_text:
                 print("✔ Correct")
                 score += 1
             else:
                 print("✖ Wrong")
-                print(f"Correct answer: {correct_answer}")
+                print(f"Correct answer: {correct_text}")
         else:
             print("✖ Invalid input")
 
     print(f"\nScore: {score}/{len(questions)}")
-
 
     if score == len(questions):
         print("Mihu: Acceptable. You didn't embarrass yourself.")
@@ -75,48 +93,54 @@ def run_quiz():
         print("Mihu: This is disappointing.")
 
 
-#Funkcija za pod-menu koncept
+#CONCEPT VIEW
 def display_concept_part(concept):
-    """Prikaz Explanation, Derivation ili Deep dive za odabrani koncept."""
     while True:
         print(f"\n=== {concept.name} ===")
         print("1. Explanation")
         print("2. Derivation")
         print("3. Deep dive")
-        print("0. Back to Concepts")
+        print("0. Back")
+
         choice = input("Choose: ")
 
         if choice == "1":
-            print(f"\n{concept.explanation}\n")
+            mihu_type(concept.explanation)
         elif choice == "2":
-            print(f"\n{concept.derivation}\n")
+            mihu_type(concept.derivation)
         elif choice == "3":
-            print(f"\n{concept.deep_dive}\n")
+            mihu_type(concept.deep_dive)
         elif choice == "0":
             break
         else:
-            print("\nInvalid choice.\n")
+            print("Invalid choice.")
 
 
+#BASIC THEORY SOURCES
 basic_theory_sources = [
     oscilations,
-    normal_modes_dive]
+    normal_modes_dive
+]
 
-#Funkcija za Basic Theory
+
+#BASIC THEORY MENU
 def show_basic_theory():
-    combined_keys = []
+    combined = {}
 
-    #skupljanje svih ključeva iz svih modula
+    #merge svih dictova
     for source in basic_theory_sources:
-        combined_keys.extend(list(source.keys()))
+        for k, v in source.items():
+            combined[k] = v
 
     while True:
-        print("\n=== BASIC THEORY (Oscillations + Damping) ===")
+        print("\n=== BASIC THEORY (Oscillations + Modes) ===")
 
-        for i, key in enumerate(combined_keys, start=1):
+        keys = list(combined.keys())
+
+        for i, key in enumerate(keys, start=1):
             print(f"{i}. {key}")
 
-        print("0. Back to Main Menu")
+        print("0. Back")
 
         choice = input("Choose concept: ")
 
@@ -126,35 +150,40 @@ def show_basic_theory():
         try:
             idx = int(choice) - 1
 
-            if 0 <= idx < len(combined_keys):
-                key = combined_keys[idx]
-
-                #nađi u kojem dictu se nalazi key
-                for source in basic_theory_sources:
-                    if key in source:
-                        value = source[key]
-                        break
+            if 0 <= idx < len(keys):
+                key = keys[idx]
+                value = combined[key]
 
                 print("\n----------------------------------")
                 print(key.upper())
                 print("----------------------------------")
-                print(value.get("mihu", ""))
+
+                mihu_type(value.get("mihu", ""))
 
             else:
                 print("Invalid choice.")
 
         except ValueError:
-            print("Invalid input. Enter a number.")
+            print("Invalid input.")
 
-#Glavni menu
+
+#MAIN MENU
 def main_menu():
-    concepts = [shm, spring_with_mass, damped_oscillations, types_damped, forced_oscillations, frequency_limits, normal_modes]
+    concepts = [
+        shm,
+        spring_with_mass,
+        damped_oscillations,
+        types_damped,
+        forced_oscillations,
+        frequency_limits,
+        normal_modes
+    ]
 
     while True:
         print("\n==============================")
         print("        MIHU PHYSICS")
         print("==============================")
-        print("1. Basic theory (Oscillations)")
+        print("1. Basic theory")
         print("2. Concepts")
         print("3. Quiz")
         print("0. Exit")
@@ -165,35 +194,41 @@ def main_menu():
             show_basic_theory()
 
         elif choice == "2":
-            #Pod-menu za izbor koncepta
             while True:
                 print("\n--- CONCEPTS ---")
+
                 for i, c in enumerate(concepts, start=1):
                     print(f"{i}. {c.name}")
-                print("0. Back to Main Menu")
+
+                print("0. Back")
 
                 sub_choice = input("Choose concept: ")
+
                 if sub_choice == "0":
                     break
+
                 try:
-                    sub_index = int(sub_choice) - 1
-                    if 0 <= sub_index < len(concepts):
-                        display_concept_part(concepts[sub_index])
+                    idx = int(sub_choice) - 1
+
+                    if 0 <= idx < len(concepts):
+                        display_concept_part(concepts[idx])
                     else:
                         print("Invalid choice.")
+
                 except ValueError:
-                    print("Invalid input. Enter a number.")
+                    print("Invalid input.")
+
+        elif choice == "3":
+            run_quiz()
 
         elif choice == "0":
             print("\nMihu is done with you.\n")
             break
 
-        elif choice == "3":
-            run_quiz()
-
         else:
-            print("\nInvalid choice.\n")
+            print("Invalid choice.")
 
-#Pokretanje aplikacije
+
+#start
 if __name__ == "__main__":
     main_menu()
