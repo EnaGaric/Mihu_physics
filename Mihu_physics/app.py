@@ -4,6 +4,7 @@ from Mihu_physics.data.waves.spring_mass import spring_with_mass
 from Mihu_physics.data.waves.damped_oscilations import damped_oscillations
 from Mihu_physics.data.waves.types_of_damped import types_damped
 from Mihu_physics.data.waves.quiz import quiz_data
+from Mihu_physics.data.waves.forced_oscilations import forced_oscillations
 import random
 
 def run_quiz():
@@ -70,7 +71,7 @@ def run_quiz():
         print("Mihu: This is disappointing.")
 
 
-# ----- Funkcija za pod-menu koncepta -----
+#Funkcija za pod-menu koncept
 def display_concept_part(concept):
     """Prikaz Explanation, Derivation ili Deep dive za odabrani koncept."""
     while True:
@@ -92,7 +93,7 @@ def display_concept_part(concept):
         else:
             print("\nInvalid choice.\n")
 
-# ----- Funkcija za Basic Theory -----
+#Funkcija za Basic Theory
 def show_basic_theory():
     print("\n=== BASIC THEORY (Oscillations) ===")
     for key, value in oscilations.items():
@@ -100,9 +101,9 @@ def show_basic_theory():
         print(f"Definition: {value.get('definition', '')}")
         print(f"Mihu: {value.get('mihu', '')}")
 
-# ----- Glavni menu -----
+#Glavni menu
 def main_menu():
-    concepts = [shm, spring_with_mass, damped_oscillations,types_damped]
+    concepts = [shm, spring_with_mass, damped_oscillations, types_damped, forced_oscillations]
 
     while True:
         print("\n==============================")
@@ -148,6 +149,6 @@ def main_menu():
         else:
             print("\nInvalid choice.\n")
 
-# ----- Pokretanje aplikacije -----
+#Pokretanje aplikacije
 if __name__ == "__main__":
     main_menu()
