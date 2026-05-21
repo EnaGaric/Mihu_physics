@@ -5,6 +5,7 @@ from Mihu_physics.data.waves.damped_oscilations import damped_oscillations
 from Mihu_physics.data.waves.types_of_damped import types_damped
 from Mihu_physics.data.waves.quiz import quiz_data
 from Mihu_physics.data.waves.forced_oscilations import forced_oscillations
+from Mihu_physics.data.waves.frequency_limit import frequency_limits
 import random
 
 def run_quiz():
@@ -103,7 +104,7 @@ def show_basic_theory():
 
 #Glavni menu
 def main_menu():
-    concepts = [shm, spring_with_mass, damped_oscillations, types_damped, forced_oscillations]
+    concepts = [shm, spring_with_mass, damped_oscillations, types_damped, forced_oscillations, frequency_limits]
 
     while True:
         print("\n==============================")
