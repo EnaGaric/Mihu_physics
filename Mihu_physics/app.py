@@ -1,4 +1,6 @@
 from Mihu_physics.data.waves.oscilations import oscilations
+from Mihu_physics.data.waves.normal_mode2 import normal_modes_dive
+
 from Mihu_physics.data.waves.shm import shm
 from Mihu_physics.data.waves.spring_mass import spring_with_mass
 from Mihu_physics.data.waves.damped_oscilations import damped_oscillations
@@ -95,13 +97,54 @@ def display_concept_part(concept):
         else:
             print("\nInvalid choice.\n")
 
+
+basic_theory_sources = [
+    oscilations,
+    normal_modes_dive]
+
 #Funkcija za Basic Theory
 def show_basic_theory():
-    print("\n=== BASIC THEORY (Oscillations) ===")
-    for key, value in oscilations.items():
-        print(f"\n--- {key.upper()} ---")
-        print(f"Definition: {value.get('definition', '')}")
-        print(f"Mihu: {value.get('mihu', '')}")
+    combined_keys = []
+
+    #skupljanje svih ključeva iz svih modula
+    for source in basic_theory_sources:
+        combined_keys.extend(list(source.keys()))
+
+    while True:
+        print("\n=== BASIC THEORY (Oscillations + Damping) ===")
+
+        for i, key in enumerate(combined_keys, start=1):
+            print(f"{i}. {key}")
+
+        print("0. Back to Main Menu")
+
+        choice = input("Choose concept: ")
+
+        if choice == "0":
+            break
+
+        try:
+            idx = int(choice) - 1
+
+            if 0 <= idx < len(combined_keys):
+                key = combined_keys[idx]
+
+                #nađi u kojem dictu se nalazi key
+                for source in basic_theory_sources:
+                    if key in source:
+                        value = source[key]
+                        break
+
+                print("\n----------------------------------")
+                print(key.upper())
+                print("----------------------------------")
+                print(value.get("mihu", ""))
+
+            else:
+                print("Invalid choice.")
+
+        except ValueError:
+            print("Invalid input. Enter a number.")
 
 #Glavni menu
 def main_menu():
