@@ -21,6 +21,7 @@ def mihu_type(text):
 #IMPORTS
 from Mihu_physics.data.waves.oscilations import oscilations
 from Mihu_physics.data.waves.normal_mode2 import normal_modes_dive
+from Mihu_physics.data.waves2.basic import waves_intro
 
 from Mihu_physics.data.waves.shm import shm
 from Mihu_physics.data.waves.spring_mass import spring_with_mass
@@ -144,7 +145,8 @@ def display_concept_part(concept):
 #BASIC THEORY SOURCES
 basic_theory_sources = [
     oscilations,
-    normal_modes_dive
+    normal_modes_dive,
+    waves_intro
 ]
 
 
@@ -209,7 +211,7 @@ def main_menu():
 
         elif choice == "2":
 
-            # GROUP MENU
+            #GROUP MENU
             while True:
                 print("\n--- CONCEPT GROUPS ---")
                 print("1. Oscillations")
@@ -233,7 +235,7 @@ def main_menu():
                     print("Invalid choice.")
                     continue
 
-                # CONCEPT LIST
+                #CONCEPT LIST
                 while True:
                     print(f"\n--- {group_name} CONCEPTS ---")
 
