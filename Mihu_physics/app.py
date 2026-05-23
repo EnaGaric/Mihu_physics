@@ -30,6 +30,31 @@ from Mihu_physics.data.waves.quiz import quiz_data
 from Mihu_physics.data.waves.forced_oscilations import forced_oscillations
 from Mihu_physics.data.waves.frequency_limit import frequency_limits
 from Mihu_physics.data.waves.normal_mode1 import normal_modes
+from Mihu_physics.data.waves.nm_method import normal_modes_method
+from Mihu_physics.data.waves.nm_example import coupled_oscillators
+from Mihu_physics.data.waves.N_oscillators import n_coupled_oscillators
+
+
+
+#GROUPS (NEW STRUCTURE)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+
+OSCILLATIONS_CONCEPTS = [
+    shm,
+    spring_with_mass,
+    damped_oscillations,
+    types_damped,
+    forced_oscillations,
+    frequency_limits,
+    normal_modes,
+    normal_modes_method,
+    coupled_oscillators,
+    n_coupled_oscillators
+]
+
+WAVES_CONCEPTS = [
+    #za sada prazno
+]
 
 
 #QUIZ
@@ -127,7 +152,6 @@ basic_theory_sources = [
 def show_basic_theory():
     combined = {}
 
-    #merge svih dictova
     for source in basic_theory_sources:
         for k, v in source.items():
             combined[k] = v
@@ -167,18 +191,8 @@ def show_basic_theory():
             print("Invalid input.")
 
 
-#MAIN MENU
+#MAIN MENU (UPDATED)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 def main_menu():
-    concepts = [
-        shm,
-        spring_with_mass,
-        damped_oscillations,
-        types_damped,
-        forced_oscillations,
-        frequency_limits,
-        normal_modes
-    ]
-
     while True:
         print("\n==============================")
         print("        MIHU PHYSICS")
@@ -194,29 +208,55 @@ def main_menu():
             show_basic_theory()
 
         elif choice == "2":
+
+            # GROUP MENU
             while True:
-                print("\n--- CONCEPTS ---")
-
-                for i, c in enumerate(concepts, start=1):
-                    print(f"{i}. {c.name}")
-
+                print("\n--- CONCEPT GROUPS ---")
+                print("1. Oscillations")
+                print("2. Waves")
                 print("0. Back")
 
-                sub_choice = input("Choose concept: ")
+                group_choice = input("Choose group: ")
 
-                if sub_choice == "0":
+                if group_choice == "0":
                     break
 
-                try:
-                    idx = int(sub_choice) - 1
+                if group_choice == "1":
+                    current_group = OSCILLATIONS_CONCEPTS
+                    group_name = "OSCILLATIONS"
 
-                    if 0 <= idx < len(concepts):
-                        display_concept_part(concepts[idx])
-                    else:
-                        print("Invalid choice.")
+                elif group_choice == "2":
+                    current_group = WAVES_CONCEPTS
+                    group_name = "WAVES"
 
-                except ValueError:
-                    print("Invalid input.")
+                else:
+                    print("Invalid choice.")
+                    continue
+
+                # CONCEPT LIST
+                while True:
+                    print(f"\n--- {group_name} CONCEPTS ---")
+
+                    for i, c in enumerate(current_group, start=1):
+                        print(f"{i}. {c.name}")
+
+                    print("0. Back")
+
+                    sub_choice = input("Choose concept: ")
+
+                    if sub_choice == "0":
+                        break
+
+                    try:
+                        idx = int(sub_choice) - 1
+
+                        if 0 <= idx < len(current_group):
+                            display_concept_part(current_group[idx])
+                        else:
+                            print("Invalid choice.")
+
+                    except ValueError:
+                        print("Invalid input.")
 
         elif choice == "3":
             run_quiz()
