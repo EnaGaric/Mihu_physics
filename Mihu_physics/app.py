@@ -34,7 +34,8 @@ from Mihu_physics.data.waves.normal_mode1 import normal_modes
 from Mihu_physics.data.waves.nm_method import normal_modes_method
 from Mihu_physics.data.waves.nm_example import coupled_oscillators
 from Mihu_physics.data.waves.N_oscillators import n_coupled_oscillators
-
+from Mihu_physics.data.waves2.wave_equation import wave_equation_derivation
+from Mihu_physics.data.waves2.standing_wave import standing_waves
 
 
 #GROUPS (NEW STRUCTURE)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -50,11 +51,12 @@ OSCILLATIONS_CONCEPTS = [
     normal_modes,
     normal_modes_method,
     coupled_oscillators,
-    n_coupled_oscillators
+    n_coupled_oscillators,
 ]
 
 WAVES_CONCEPTS = [
-    #za sada prazno
+    wave_equation_derivation,
+    standing_waves
 ]
 
 
@@ -123,18 +125,21 @@ def run_quiz():
 def display_concept_part(concept):
     while True:
         print(f"\n=== {concept.name} ===")
-        print("1. Explanation")
-        print("2. Derivation")
-        print("3. Deep dive")
+        print("1. Definition")
+        print("2. Explanation")
+        print("3. Derivation")
+        print("4. Deep dive")
         print("0. Back")
 
         choice = input("Choose: ")
 
         if choice == "1":
-            mihu_type(concept.explanation)
+            mihu_type(concept.definition)
         elif choice == "2":
-            mihu_type(concept.derivation)
+            mihu_type(concept.explanation)
         elif choice == "3":
+            mihu_type(concept.derivation)
+        elif choice == "2":
             mihu_type(concept.deep_dive)
         elif choice == "0":
             break
