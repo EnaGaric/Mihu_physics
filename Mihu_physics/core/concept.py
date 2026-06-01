@@ -15,7 +15,4 @@ class Concept:
         self.formulas = formulas or []
         self.terms = terms or {}
         self.derivation = derivation
-        self.deep_dive = deep_dive
-
-    def get_deep_dive(self):
-        return self.deep_dive
+        self.deep_dive = deep_dive 

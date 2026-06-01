@@ -139,7 +139,7 @@ def display_concept_part(concept):
             mihu_type(concept.explanation)
         elif choice == "3":
             mihu_type(concept.derivation)
-        elif choice == "2":
+        elif choice == "4":
             mihu_type(concept.deep_dive)
         elif choice == "0":
             break
