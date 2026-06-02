@@ -36,6 +36,9 @@ from Mihu_physics.data.waves.nm_example import coupled_oscillators
 from Mihu_physics.data.waves.N_oscillators import n_coupled_oscillators
 from Mihu_physics.data.waves2.wave_equation import wave_equation_derivation
 from Mihu_physics.data.waves2.standing_wave import standing_waves
+from Mihu_physics.data.waves2.sound_wave import sound_waves
+from Mihu_physics.data.waves2.energy_intensity import sound_energy_and_intensity
+from Mihu_physics.data.waves2.doppler import doppler_effect
 
 
 #GROUPS (NEW STRUCTURE)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -56,7 +59,10 @@ OSCILLATIONS_CONCEPTS = [
 
 WAVES_CONCEPTS = [
     wave_equation_derivation,
-    standing_waves
+    standing_waves,
+    sound_waves,
+    sound_energy_and_intensity,
+    doppler_effect
 ]
 
 
