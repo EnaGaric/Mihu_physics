@@ -22,6 +22,7 @@ def mihu_type(text):
 from Mihu_physics.data.waves.oscilations import oscilations
 from Mihu_physics.data.waves.normal_mode2 import normal_modes_dive
 from Mihu_physics.data.waves2.basic import waves_intro
+from Mihu_physics.data.waves2.wave_velocity import wave_velocities
 
 from Mihu_physics.data.waves.shm import shm
 from Mihu_physics.data.waves.spring_mass import spring_with_mass
@@ -39,6 +40,8 @@ from Mihu_physics.data.waves2.standing_wave import standing_waves
 from Mihu_physics.data.waves2.sound_wave import sound_waves
 from Mihu_physics.data.waves2.energy_intensity import sound_energy_and_intensity
 from Mihu_physics.data.waves2.doppler import doppler_effect
+from Mihu_physics.data.waves2.fourier import fourier_analysis
+from Mihu_physics.data.waves2.dispersion import dispersion_effect
 
 
 #GROUPS (NEW STRUCTURE)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
@@ -62,7 +65,9 @@ WAVES_CONCEPTS = [
     standing_waves,
     sound_waves,
     sound_energy_and_intensity,
-    doppler_effect
+    doppler_effect,
+    fourier_analysis,
+    dispersion_effect
 ]
 
 
@@ -157,7 +162,8 @@ def display_concept_part(concept):
 basic_theory_sources = [
     oscilations,
     normal_modes_dive,
-    waves_intro
+    waves_intro,
+    wave_velocities
 ]
 
 
