@@ -239,5 +239,3 @@ You are tracking rotation in phase space.
 That is what oscillation really is.
 """
 )
-
-related = ["spring_with_mass"]
